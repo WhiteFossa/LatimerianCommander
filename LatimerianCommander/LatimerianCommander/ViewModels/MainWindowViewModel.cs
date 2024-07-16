@@ -1,8 +1,8 @@
-﻿namespace LatimerianCommander.ViewModels;
+﻿using LatimerianCommanderBusinessLogic.Services.Abstract.Ui;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace LatimerianCommander.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
 }

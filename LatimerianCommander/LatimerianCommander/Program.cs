@@ -1,6 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using System;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
+using LatimerianCommanderBusinessLogic.Services.Abstract.Ui;
+using LatimerianCommanderBusinessLogic.Services.Implementations.Ui;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LatimerianCommander;
@@ -44,6 +48,21 @@ sealed class Program
     {
         IServiceCollection services = new ServiceCollection();
         
+        services.AddSingleton<IUiBuilder, UiBuilder>();
+        
         return services;
+    }
+    
+    /// <summary>
+    /// Get app main window
+    /// </summary>
+    public static Window GetMainWindow()
+    {
+        if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
+        {
+            return desktopLifetime.MainWindow;
+        }
+
+        return null;
     }
 }
