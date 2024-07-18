@@ -13,11 +13,7 @@ public class MainMenuBuilder : IMainMenuBuilder
     
     public Menu BuildMainMenu()
     {
-        var menu = new Menu()
-        {
-            [Grid.ColumnProperty] = 0,
-            [Grid.RowProperty] = 0
-        };
+        var menu = new Menu();
 
         #region Main menu -> File
 

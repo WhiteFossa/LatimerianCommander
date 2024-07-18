@@ -12,11 +12,7 @@ public class MainToolbarBuilder : IMainToolbarBuilder
     
     public Grid BuildMainToolbar()
     {
-        _mainToolbar = new Grid()
-        {
-            [Grid.ColumnProperty] = 0,
-            [Grid.RowProperty] = 1
-        };
+        _mainToolbar = new Grid();
 
         _mainToolbar.ColumnDefinitions = new ColumnDefinitions()
         {
