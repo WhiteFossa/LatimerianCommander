@@ -5,8 +5,10 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainMenu;
+using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainToolbar;
 using LatimerianCommanderBusinessLogic.Services.Implementations.Ui;
 using LatimerianCommanderBusinessLogic.Services.Implementations.Ui.MainMenu;
+using LatimerianCommanderBusinessLogic.Services.Implementations.Ui.MainToolbar;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LatimerianCommander;
@@ -52,6 +54,7 @@ sealed class Program
         
         services.AddSingleton<IUiBuilder, UiBuilder>();
         services.AddSingleton<IMainMenuBuilder, MainMenuBuilder>();
+        services.AddSingleton<IMainToolbarBuilder, MainToolbarBuilder>();
         
         return services;
     }

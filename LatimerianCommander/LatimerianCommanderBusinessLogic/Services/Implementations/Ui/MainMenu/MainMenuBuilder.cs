@@ -1,37 +1,15 @@
 using Avalonia.Controls;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainMenu;
+using LatimerianCommanderBusinessLogic.Services.Enums.Ui;
 
 namespace LatimerianCommanderBusinessLogic.Services.Implementations.Ui.MainMenu;
 
 public class MainMenuBuilder : IMainMenuBuilder
 {
-    #region File submenu
-    
     /// <summary>
-    /// File submenu
+    /// Menu items are stored here
     /// </summary>
-    private MenuItem _mainMenuFile;
-
-    /// <summary>
-    /// Exit
-    /// </summary>
-    private MenuItem _mainMenuFileExit;
-    
-    #endregion
-
-    #region Settings submenu
-    
-    /// <summary>
-    /// Settings submenu
-    /// </summary>
-    private MenuItem _mainMenuSettings;
-
-    /// <summary>
-    /// Preferences
-    /// </summary>
-    private MenuItem _mainMenuSettingsPreferences;
-    
-    #endregion
+    private readonly Dictionary<MainMenuItems, MenuItem> _mainMenuItems = new Dictionary<MainMenuItems, MenuItem>();
     
     public Menu BuildMainMenu()
     {
@@ -43,23 +21,27 @@ public class MainMenuBuilder : IMainMenuBuilder
 
         #region Main menu -> File
 
-        _mainMenuFile = new MenuItem()
-        {
-            Header = "File"
-        };
+        _mainMenuItems.Add
+        (
+            MainMenuItems.File,
+            new MenuItem()
+            {
+                Header = "File"
+            }
+        );
         
-        menu.Items.Add(_mainMenuFile);
+        menu.Items.Add(GetMainMenuItem(MainMenuItems.File));
 
-        _mainMenuFile.Items.Add(new Separator());
+        GetMainMenuItem(MainMenuItems.File).Items.Add(new Separator());
 
         #region Main menu -> File -> Exit
 
-        _mainMenuFileExit = new MenuItem()
+        _mainMenuItems.Add(MainMenuItems.FileExit, new MenuItem()
         {
             Header = "Exit"
-        };
+        });
         
-        _mainMenuFile.Items.Add(_mainMenuFileExit);
+        GetMainMenuItem(MainMenuItems.File).Items.Add(GetMainMenuItem(MainMenuItems.FileExit));
 
         #endregion
         
@@ -68,29 +50,29 @@ public class MainMenuBuilder : IMainMenuBuilder
 
         #region Settings
 
-        _mainMenuSettings = new MenuItem()
+        _mainMenuItems.Add(MainMenuItems.Settings, new MenuItem()
         {
             Header = "Settings"
-        };
+        });
         
-        menu.Items.Add(_mainMenuSettings);
+        menu.Items.Add(GetMainMenuItem(MainMenuItems.Settings));
 
-        _mainMenuSettings.Items.Add(new Separator());
+        GetMainMenuItem(MainMenuItems.Settings).Items.Add(new Separator());
 
-        _mainMenuSettingsPreferences = new MenuItem()
+        _mainMenuItems.Add(MainMenuItems.SettingsPreferences, new MenuItem()
         {
             Header = "Preferences"
-        };
+        });
 
-        _mainMenuSettings.Items.Add(_mainMenuSettingsPreferences);
+        GetMainMenuItem(MainMenuItems.Settings).Items.Add(GetMainMenuItem(MainMenuItems.SettingsPreferences));
 
         #endregion
 
         return menu;
     }
 
-    public MenuItem GetFileExitMenuItem()
+    public MenuItem GetMainMenuItem(MainMenuItems item)
     {
-        return _mainMenuFileExit;
+        return _mainMenuItems[item];
     }
 }

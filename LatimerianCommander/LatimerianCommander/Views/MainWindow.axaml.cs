@@ -3,6 +3,7 @@ using System.Reactive;
 using Avalonia.Controls;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainMenu;
+using LatimerianCommanderBusinessLogic.Services.Enums.Ui;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
 
@@ -28,7 +29,7 @@ public partial class MainWindow : Window
 
         var mainMenuBuilder = Program.Di.GetService<IMainMenuBuilder>();
 
-        mainMenuBuilder.GetFileExitMenuItem().Command = ReactiveCommand.Create(OnFileExitCommand);
+        mainMenuBuilder.GetMainMenuItem(MainMenuItems.FileExit).Command = ReactiveCommand.Create(OnFileExitCommand);
 
         #endregion
     }

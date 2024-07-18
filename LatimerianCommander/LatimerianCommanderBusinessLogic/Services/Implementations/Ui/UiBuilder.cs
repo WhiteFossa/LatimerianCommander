@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui;
 using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainMenu;
+using LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainToolbar;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LatimerianCommanderBusinessLogic.Services.Implementations.Ui;
@@ -27,6 +28,20 @@ public class UiBuilder : IUiBuilder
     private Menu _mainMenu;
     
     #endregion
+
+    #region Main toolbar
+
+    /// <summary>
+    /// Main toolbar builder
+    /// </summary>
+    private IMainToolbarBuilder _mainToolbarBuilder;
+
+    /// <summary>
+    /// Main toolbar
+    /// </summary>
+    private Grid _mainToolbar;
+
+    #endregion
     
     public void BuildUi(Window mainWindow, ServiceProvider di)
     {
@@ -44,6 +59,7 @@ public class UiBuilder : IUiBuilder
         _mainGrid.RowDefinitions = new RowDefinitions()
         {
             new RowDefinition(1, GridUnitType.Auto),
+            new RowDefinition(1, GridUnitType.Auto),
             new RowDefinition(1, GridUnitType.Star)
         };
         
@@ -59,22 +75,13 @@ public class UiBuilder : IUiBuilder
 
         #endregion
 
-        /*var button1 = new Button()
-        {
-            Content = "YIFF",
-            [Grid.ColumnProperty] = 0,
-            [Grid.RowProperty] = 0
-        };
+        #region Main toolbar
 
-        var button2 = new Button()
-        {
-            Content = "YUFF",
-            [Grid.ColumnProperty] = 0,
-            [Grid.RowProperty] = 1
-        };
+        _mainToolbarBuilder = _di.GetService<IMainToolbarBuilder>();
+        _mainToolbar = _mainToolbarBuilder.BuildMainToolbar();
+        _mainGrid.Children.Add(_mainToolbar);
 
-        _mainGrid.Children.Add(button1);
-        _mainGrid.Children.Add(button2);*/
+        #endregion
 
     }
 

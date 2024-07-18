@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using LatimerianCommanderBusinessLogic.Services.Enums.Ui;
 
 namespace LatimerianCommanderBusinessLogic.Services.Abstract.Ui.MainMenu;
 
@@ -12,12 +13,8 @@ public interface IMainMenuBuilder
     /// </summary>
     Menu BuildMainMenu();
     
-    #region File
-
     /// <summary>
-    /// Get File -> Exit
+    /// Get main menu item
     /// </summary>
-    MenuItem GetFileExitMenuItem();
-
-    #endregion
+    MenuItem GetMainMenuItem(MainMenuItems item);
 }
