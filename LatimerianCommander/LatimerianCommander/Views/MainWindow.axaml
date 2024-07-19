@@ -5,7 +5,186 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="LatimerianCommander.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="LatimerianCommander">
+        Title="Latimerian Commander">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Window.Styles>
+        <StyleInclude Source="/Styles/Common.axaml" />
+    </Window.Styles>
+
+    <!-- Main grid -->
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <!-- Main menu -->
+        <Menu
+            Grid.Row="0"
+            Grid.Column="0">
+            
+            <!-- File -->
+            <MenuItem Header="File">
+                
+                <MenuItem
+                    Header="Exit"
+                    Command="{ Binding CommandExit }"/>
+                
+            </MenuItem>
+            
+            <!-- Settings -->
+            <MenuItem Header="Settings">
+                
+                <MenuItem Header="Preferences"></MenuItem>
+                
+            </MenuItem>
+            
+        </Menu>
+        
+        <!-- Main toolbar -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Orientation="Horizontal">
+            
+            <Button
+                Content="Btn 1" />
+            
+            <Button
+                Content="Btn 2" />
+            
+            <Button
+                Content="Btn 3" />
+            
+        </StackPanel>
+        
+        <!-- Two panels -->
+        <Grid
+            Grid.Row="2"
+            Grid.Column="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- Left panel -->
+            <Rectangle
+                Grid.Column="0"
+                Grid.Row="0"
+                Fill="Blue" />
+                
+            <!-- Splitter -->
+            <GridSplitter
+                Grid.Column="1"
+                Grid.Row="0" />
+            
+            <!-- Right panel -->
+            <Rectangle
+                Grid.Column="2"
+                Grid.Row="0"
+                Fill="Red" />
+            
+        </Grid>
+        
+        <!-- Bottom buttons -->
+        <Grid
+            Grid.Row="3"
+            Grid.Column="0">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <!-- Rename -->
+            <Button
+                Grid.Column="0"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F2 Rename" />
+            
+            <!-- View -->
+            <Button
+                Grid.Column="1"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F3 View" />
+            
+            <!-- Edit -->
+            <Button
+                Grid.Column="2"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F4 Edit" />
+            
+            <!-- Copy -->
+            <Button
+                Grid.Column="3"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F5 Copy" />
+            
+            <!-- Move -->
+            <Button
+                Grid.Column="4"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F6 Move" />
+            
+            <!-- New directory -->
+            <Button
+                Grid.Column="5"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F7 New directory" />
+            
+            <!-- Delete -->
+            <Button
+                Grid.Column="6"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F8 Delete" />
+            
+            <!-- Terminal -->
+            <Button
+                Grid.Column="7"
+                Grid.Row="0"
+                Classes="CommandButton"
+                Content="F9 Terminal" />
+            
+        </Grid>
+        
+    </Grid>
 
 </Window>
