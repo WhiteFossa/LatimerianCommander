@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:controls="clr-namespace:LatimerianCommander.Controls"
         x:Class="LatimerianCommander.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -43,7 +44,7 @@
                 
                 <MenuItem
                     Header="Exit"
-                    Command="{ Binding CommandExit }"/>
+                    Command="{ Binding ExitCommand }"/>
                 
             </MenuItem>
             
@@ -107,83 +108,13 @@
             
         </Grid>
         
-        <!-- Bottom buttons -->
-        <Grid
+        <!-- Command buttons -->
+        <controls:CommandButtons
             Grid.Row="3"
-            Grid.Column="0">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            
-            <!-- Rename -->
-            <Button
-                Grid.Column="0"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F2 Rename" />
-            
-            <!-- View -->
-            <Button
-                Grid.Column="1"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F3 View" />
-            
-            <!-- Edit -->
-            <Button
-                Grid.Column="2"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F4 Edit" />
-            
-            <!-- Copy -->
-            <Button
-                Grid.Column="3"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F5 Copy" />
-            
-            <!-- Move -->
-            <Button
-                Grid.Column="4"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F6 Move" />
-            
-            <!-- New directory -->
-            <Button
-                Grid.Column="5"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F7 New directory" />
-            
-            <!-- Delete -->
-            <Button
-                Grid.Column="6"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F8 Delete" />
-            
-            <!-- Terminal -->
-            <Button
-                Grid.Column="7"
-                Grid.Row="0"
-                Classes="CommandButton"
-                Content="F9 Terminal" />
-            
-        </Grid>
+            Grid.Column="0" 
+            Rename="OnRename"
+            View="OnView"
+            Edit="OnEdit"/>
         
     </Grid>
 

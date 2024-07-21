@@ -4,13 +4,11 @@
     
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key='Light'>
-            <SolidColorBrush x:Key='BackgroundBrush'>White</SolidColorBrush>
-            <SolidColorBrush x:Key='ForegroundBrush'>Black</SolidColorBrush>
+            <SolidColorBrush x:Key='BordersBrush'>Black</SolidColorBrush>
         </ResourceDictionary>
         
         <ResourceDictionary x:Key='Dark'>
-            <SolidColorBrush x:Key='BackgroundBrush'>Black</SolidColorBrush>
-            <SolidColorBrush x:Key='ForegroundBrush'>White</SolidColorBrush>
+            <SolidColorBrush x:Key='BordersBrush'>White</SolidColorBrush>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
     

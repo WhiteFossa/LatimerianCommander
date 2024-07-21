@@ -7,7 +7,7 @@ public class MainWindowViewModel : ViewModelBase
 {
     #region Commands
     
-    public ReactiveCommand<Unit, Unit> CommandExit { get; }
+    public ReactiveCommand<Unit, Unit> ExitCommand { get; }
     
     #endregion
 
@@ -15,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
     {
         #region Commands binding
 
-        CommandExit = ReactiveCommand.Create(OnExitCommand);
+        ExitCommand = ReactiveCommand.Create(OnExitCommand);
 
         #endregion
     }
@@ -25,6 +25,34 @@ public class MainWindowViewModel : ViewModelBase
     private void OnExitCommand()
     {
         Program.GetMainWindow().Close();
+    }
+    
+    #endregion
+    
+    #region Command buttons
+
+    /// <summary>
+    /// Called when Rename button is pressed
+    /// </summary>
+    public void OnRename()
+    {
+        int a = 10;
+    }
+
+    /// <summary>
+    /// Called when View button is pressed
+    /// </summary>
+    public void OnView()
+    {
+        int a = 10;
+    }
+    
+    /// <summary>
+    /// Called when Edit button is pressed
+    /// </summary>
+    public void OnEdit()
+    {
+        int a = 10;
     }
 
     #endregion
